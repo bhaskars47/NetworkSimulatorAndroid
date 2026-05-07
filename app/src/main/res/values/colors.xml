@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material3 seed color: deep blue -->
+    <color name="md_theme_primary">#1A6EE1</color>
+    <color name="md_theme_on_primary">#FFFFFF</color>
+    <color name="md_theme_primary_container">#D8E2FF</color>
+    <color name="md_theme_on_primary_container">#001550</color>
+    <color name="md_theme_secondary">#585E71</color>
+    <color name="md_theme_surface">#FAFAFF</color>
+    <color name="md_theme_on_surface">#1A1C20</color>
+    <color name="md_theme_surface_variant">#E1E2EC</color>
+
+    <!-- Status chip -->
+    <color name="chip_active_bg">#C8E6C9</color>
+    <color name="chip_active_text">#1B5E20</color>
+    <color name="chip_inactive_bg">#ECEFF1</color>
+    <color name="chip_inactive_text">#546E7A</color>
+</resources>

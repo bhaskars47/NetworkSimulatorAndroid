@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Network access for forwarding intercepted packets -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Required for running VpnService as a foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Required on Android 13+ (API 33+) to show any notification.
+         On Android 14+ this applies to foreground service notifications too —
+         without it the live-stats notification is silently suppressed. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Optional: auto-start after reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NetworkSimulator">
+
+        <!-- ── Main UI ── -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            ── VPN Service ──
+            The BIND_VPN_SERVICE permission is MANDATORY — Android will refuse
+            to bind a VpnService without it.
+        -->
+        <service
+            android:name=".vpn.NetworkSimulatorVpnService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <!--
+                Required on Android 14 (API 34+) when foregroundServiceType="specialUse".
+                Without this <property> element, startForeground() throws SecurityException
+                and kills the service immediately.
+            -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="VPN-based network condition simulator for QA testing of app performance under degraded network profiles (latency, packet loss, bandwidth throttling)." />
+        </service>
+
+    </application>
+</manifest>

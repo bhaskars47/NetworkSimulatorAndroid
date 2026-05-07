@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Network Simulator</string>
+
+    <!-- Section labels -->
+    <string name="label_select_profile">Select Network Profile</string>
+    <string name="label_target_app">Target App</string>
+    <string name="label_latency">Latency</string>
+    <string name="label_jitter">Jitter</string>
+    <string name="label_packet_loss">Packet Loss</string>
+    <string name="label_bandwidth">Bandwidth Limit</string>
+
+    <!-- Profile names -->
+    <string name="profile_slow3g">Slow 3G</string>
+    <string name="profile_high_latency">High Latency</string>
+    <string name="profile_packet_loss">Packet Loss</string>
+    <string name="profile_custom">Custom</string>
+
+    <!-- Profile descriptions -->
+    <string name="desc_slow3g">300 kbps · 300 ms · 1 % loss</string>
+    <string name="desc_high_latency">1 000 ms delay · 0.5 % loss</string>
+    <string name="desc_packet_loss">20 % drop · 50 ms delay</string>
+    <string name="desc_custom">Your own parameters</string>
+
+    <!-- Input hints -->
+    <string name="hint_package_name">e.g. com.example.myapp (blank = all apps)</string>
+
+    <!-- Buttons -->
+    <string name="btn_start">Start Simulation</string>
+    <string name="btn_stop">Stop Simulation</string>
+
+    <!-- Notification -->
+    <string name="notif_title">Network Simulator Active</string>
+    <string name="notif_stop">Stop</string>
+</resources>
