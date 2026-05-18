@@ -7,9 +7,9 @@ An Android APK that uses `VpnService` to intercept your target app's traffic on-
 
 ---
 
-## 🚀 What it does
+## 🚀 What it does (Network Chaos Testing)
 
-The app creates a local VPN tunnel. By specifying a target package name, only the traffic from your app under test is routed through the tunnel, while the rest of the device remains completely unaffected.
+The app acts as a local **Chaos Monkey** for your Android device. It creates a local VPN tunnel where, by specifying a target package name, only the traffic from your app under test is routed through the tunnel. It then applies configurable network degradation to perform **Network Chaos Testing**, while the rest of the device remains completely unaffected.
 
 ```mermaid
 flowchart LR
