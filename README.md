@@ -3,13 +3,13 @@
 ![Android](https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android)
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?style=for-the-badge&logo=kotlin)
 
-An Android APK that uses `VpnService` to intercept your target app's traffic on-device — **no laptop, no proxy server, no root required** — and applies configurable network degradation in real time.
+An Android APK that uses `VpnService` to intercept your target app's traffic on-device — **no laptop, no proxy server, no root required** — and applies configurable network degradation, **traffic shaping**, and **fault injection** in real time.
 
 ---
 
 ## 🚀 What it does (Network Chaos Testing)
 
-The app acts as a local **Chaos Monkey** for your Android device. It creates a local VPN tunnel where, by specifying a target package name, only the traffic from your app under test is routed through the tunnel. It then applies configurable network degradation to perform **Network Chaos Testing**, while the rest of the device remains completely unaffected.
+The app acts as a local **Chaos Monkey** for your Android device. As a lightweight, on-device alternative to Charles Proxy, it creates a local VPN tunnel where, by specifying a target package name, only the traffic from your app under test is routed through the tunnel. It then applies configurable network degradation to perform **Network Chaos Testing**, while the rest of the device remains completely unaffected.
 
 ```mermaid
 flowchart LR
@@ -26,11 +26,11 @@ We offer an array of built-in profiles to simulate various network conditions:
 
 | Profile | Latency | Jitter | Loss | Bandwidth | Use Case |
 |---|---|---|---|---|---|
-| 🐢 **Slow 3G** | `300 ms` | `±50 ms` | `1 %` | `100 kbps` | Simulates a poor cellular connection. |
-| 🕰️ **High Latency** | `1 000 ms` | `±200 ms` | `0.5 %` | unlimited | Tests timeout resilience. |
-| 🕳️ **Packet Loss** | `50 ms` | `±10 ms` | `20 %` | unlimited | Simulates an unstable connection. |
-| 🚂 **Train (Real India)** | *Dynamic* | *Dynamic* | *Dynamic* | *Dynamic* | Cycles: *Good Signal* (30s) → *Signal Dip* (10s) → *Dead Zone* (5s). |
-| 🎚️ **Custom** | *Slider* | *Slider* | *Slider* | *Slider* | Build your own specific network conditions. |
+| 🐢 **Slow 3G** | `300 ms` | `±50 ms` | `1 %` | `100 kbps` | Simulates a poor cellular connection via **bandwidth throttling**. |
+| 🕰️ **High Latency** | `1 000 ms` | `±200 ms` | `0.5 %` | unlimited | Evaluates **fault tolerance** and timeout resilience. |
+| 🕳️ **Packet Loss** | `50 ms` | `±10 ms` | `20 %` | unlimited | Simulates an unstable connection for **Mobile SRE** scenarios. |
+| 🚂 **Train (Real India)** | *Dynamic* | *Dynamic* | *Dynamic* | *Dynamic* | Cycles: *Good Signal* (30s) → *Signal Dip* (10s) → *Dead Zone* (5s). Tests **resilience** and recovery. |
+| 🎚️ **Custom** | *Slider* | *Slider* | *Slider* | *Slider* | Build your own specific **adverse network conditions**. |
 
 ---
 
